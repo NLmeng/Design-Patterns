@@ -20,14 +20,13 @@
 // }
 
 // applying visitor:
-// visitor that will visit and perform based on parameter passed in
+// visitor will perform based on parameter passed in
+// visitor does not choose how Object is traversed (done through accept)
 // now all "hello" "goodbye" behaviors in one place
 class HelloGoodbyeVisitor {
     // visit and perform Thing1
     public void visit(Thing1 t1) {
         System.out.println("Hello");
-        Thing2 t2 = new Thing2();
-        t2.accept(this);
     }
     // visit and perform Thing2
     public void visit(Thing2 t2) {
@@ -42,6 +41,8 @@ interface Thing {
 class Thing1 implements Thing {
     public void accept(HelloGoodbyeVisitor hgv) {
         hgv.visit(this);
+        Thing2 t2 = new Thing2();
+        t2.accept(hgv);
     }
 }
 // Thing2 accepts then dispatches itself to be visited
