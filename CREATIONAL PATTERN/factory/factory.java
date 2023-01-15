@@ -37,6 +37,7 @@ import java.util.List;
 // applying factory:
 // use when constructors become complicated, so we can afford to move behaviors outside of constructors
 // use when want obliviousness or not sure which subtype to instantiate at a particular time 
+// remove concrete coupling for clients (only depend on Interface Product and Factory)
 // interface for Product/SalmonDinner(s)
 interface Servable {
     // String salad;
@@ -118,6 +119,14 @@ public class factory {
         // append some guests
         return list;
     } 
+    
+    public static initFactory(GuestList gl) {
+        if (gl.getAllergies().contains("peanut")) {
+            return new PeanutFreeSalmonDinnerMaker();
+        } else {
+            return new RegularSalmonDinnerMaker();
+        }
+    }
 
     public static void main(String[] args) {
         // SalmonDinner dinner;
@@ -129,13 +138,8 @@ public class factory {
         // }
         // dinner.serve();
         Servable dinner;
-        SalmonDinnerMaker dinnerMaker;
         GuestList guestList = getGuestList();
-        if (guestList.getAllergies().contains("peanut")) {
-            dinnerMaker = new PeanutFreeSalmonDinnerMaker();
-        } else {
-            dinnerMaker = new RegularSalmonDinnerMaker();
-        }
+        SalmonDinnerMaker dinnerMaker = initFactory(guestList);
         dinner = dinnerMaker.constructAppropriateDinner(guestList.size());
         dinner.serve();
     }
