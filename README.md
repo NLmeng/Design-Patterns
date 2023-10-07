@@ -1,4 +1,6 @@
 # Design-Patterns
+`cd` to the directory of the pattern you want to run and run `javac <pattern>.java` and `java <pattern>`
+
 Java implementations of 9 Design Patterns:
 1. [Visitor](https://github.com/NLmeng/Design-Patterns/blob/main/BEHAVIORAL%20PATTERN/visitor/visitor.java)
 2. [Factory](https://github.com/NLmeng/Design-Patterns/blob/main/CREATIONAL%20PATTERN/factory/factory.java)

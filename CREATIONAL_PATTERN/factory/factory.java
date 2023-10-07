@@ -120,7 +120,7 @@ public class factory {
         return list;
     } 
     
-    public static initFactory(GuestList gl) {
+    public static SalmonDinnerMaker initFactory(GuestList gl) {
         if (gl.getAllergies().contains("peanut")) {
             return new PeanutFreeSalmonDinnerMaker();
         } else {
